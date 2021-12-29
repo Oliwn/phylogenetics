@@ -1,16 +1,12 @@
-# This is a sample Python script.
+import Bio
+from Bio import Entrez
+from Bio import SeqIO
 
-# Press Umschalt+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+Entrez.email = "be19b066@technikum-wien.at"
+#handle = Entrez.einfo(db="gene")
+handle = Entrez.efetch(db="nucleotide", id="AL158822", rettype="gb", retmode="text")
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Strg+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+records = SeqIO.read(handle, "gb")
+seq = records.seq
+#for record in records:
+ #   print(record)
