@@ -25,7 +25,6 @@ orthologs = []
 organisms = []
 for i in range(len(ids)):
     handle = Entrez.efetch(db="nucleotide", id=ids[i], rettype="gb", retmode="text")
-    #print(handle.read())
     records = SeqIO.read(handle, "genbank")
     handle.close()
     organism = records.annotations["organism"]
